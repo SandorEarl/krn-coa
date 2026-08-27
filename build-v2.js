@@ -196,12 +196,6 @@ function buildIndex() {
 </div>
 <div class="rows">
 ${rows}
-<div class="crow pend">
-  <span class="dot" style="background:#2323C8"></span>
-  <span class="n">GLOWTOX</span>
-  <span class="c">SNAP-8 / GHK-Cu · 30ML SERUM</span>
-  <span class="p">RECORD PUBLISHES ON LOT RELEASE</span>
-</div>
 </div>
 <a class="cta" href="${REGISTER_URL}">JOIN THE REGISTER · FIRST ALLOCATION →</a>
 ` + legal("");
