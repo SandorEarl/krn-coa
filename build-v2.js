@@ -1,6 +1,6 @@
-// KRN COA site v2 generator — run `node build-v2.js` from krn-coa-site/.
+// KRN COA site v2 generator. Run `node build-v2.js` from krn-coa-site/.
 // Regenerates index.html + per-compound pages from DATA. URLs and PDF filenames
-// are load-bearing (printed QR codes) — never change paths.
+// are load-bearing (printed QR codes), never change paths.
 // Labs are data-driven: future lots from other laboratories (e.g. the planned
 // Australian platform) are new entries in a lot's certs[] array.
 
@@ -187,7 +187,7 @@ function buildIndex() {
 
   return head("KRN · Certificates of Analysis") + brandbar() + `
 <h1 class="display">Don't trust.<br>Verify.</h1>
-<p class="sub">The permanent certificate record for every KRN compound. Independent third-party analysis per lot, published in full — read the results on the page, then open the signed laboratory PDF.</p>
+<p class="sub">The permanent certificate record for every KRN compound. Independent third-party analysis per lot, published in full. Read the results on the page, then open the signed laboratory PDF.</p>
 <div class="statbar">
   <div class="cell"><b>HPLC-UV + LC-MS</b><span>PURITY &amp; IDENTITY · EVERY LOT</span></div>
   <div class="cell"><b>USP &lt;85&gt; · LAL</b><span>ENDOTOXIN STANDARD</span></div>
@@ -209,7 +209,7 @@ const EXPLAIN = `
 <details><summary>Identity · LC-MS</summary><p>Mass spectrometry coupled to liquid chromatography confirms molecular identity by measuring exact mass-to-charge ratios. It answers one question: is the molecule exactly what the label says.</p></details>
 <details><summary>Endotoxin · LAL (USP &lt;85&gt;)</summary><p>The Limulus Amebocyte Lysate assay detects bacterial endotoxins against the USP &lt;85&gt; standard. Run in replicate with a stated assay sensitivity.</p></details>
 <details><summary>Microbial testing</summary><p>Culture-based counts (total bacteria, mold and yeast) and PCR-based detection screen for microbial contamination. A pass means counts within specification and no detectable microbial DNA respectively.</p></details>
-<details><summary>Preservative effectiveness · 30 days</summary><p>The sealed liquid format is challenged with five organisms (E. coli, P. aeruginosa, S. aureus, C. albicans, A. brasiliensis) and must suppress them to defined Log₁₀ reduction criteria across 30 days. This test exists because KRN ships reconstituted, pre-filled cartridges — powder suppliers do not run it.</p></details>
+<details><summary>Preservative effectiveness · 30 days</summary><p>The sealed liquid format is challenged with five organisms (E. coli, P. aeruginosa, S. aureus, C. albicans, A. brasiliensis) and must suppress them to defined Log₁₀ reduction criteria across 30 days. This test exists because KRN ships pre-compounded, pre-filled cartridges. Powder suppliers do not run it.</p></details>
 </div>`;
 
 function krPanel(x) {
