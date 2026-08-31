@@ -287,7 +287,50 @@ ${EXPLAIN}
 ` + legal(`/${x.slug}/`);
 }
 
+/* ---------- pending compound pages (printed QR targets; live before ink) ---------- */
+// No index rows for these (Glowtox precedent) — reachable only via the printed QR deep link
+// until the first lot's certificates land, at which point they graduate into COMPOUNDS.
+const PENDING = [
+  { slug: "rt", name: "RETATRUTIDE", c: "#E04E14", contents: "Retatrutide", dose: "20MG", format: "5ML MULTI-DOSE VIAL" },
+  { slug: "mots", name: "MOTS-C", c: "#3D6BFF", contents: "MOTS-C", dose: "40MG", format: "5ML MULTI-DOSE VIAL" },
+];
+
+function buildPending(x) {
+  return head(`KRN-${x.name} · Certificate of Analysis`) + brandbar() + `
+<div class="crumbs"><a href="/">CERTIFICATE ARCHIVE</a><span>/</span><b>KRN-${x.name}</b></div>
+<div class="chead"><span class="dot" style="background:${x.c}"></span><h1 class="display">KRN-${x.name}</h1></div>
+<div class="meta">
+<div class="cell"><span>COMPOUND</span><b>${x.contents}</b></div>
+<div class="cell"><span>DOSE</span><b>${x.dose}</b></div>
+<div class="cell"><span>FORMAT</span><b>${x.format}</b></div>
+<div class="cell"><span>ORIGIN</span><b><span class="kr">한국산</span> · MADE IN KOREA</b></div>
+</div>
+
+<h2 class="sec">CERTIFICATE RECORD · PENDING</h2>
+<div class="statcard">
+<div class="top">
+<div class="big"><b>IN TESTING</b><span>FIRST PRODUCTION LOT · DUAL-LAB ANALYSIS</span></div>
+<div class="big"><b>KOREA + USA</b><span>INDEPENDENT LABORATORIES</span></div>
+</div>
+<div class="acts">
+<a class="pdf" href="/">VIEW PUBLISHED CERTIFICATES →</a>
+<a class="reg" href="${REGISTER_URL}">JOIN THE REGISTER →</a>
+</div>
+</div>
+<p class="note">This is the permanent certificate address for KRN-${x.name}. The first production lot's independent analysis publishes here <b>before a single unit ships</b> — the same dual-laboratory standard as every released KRN compound. Match the LOT number printed on your packaging to the record on this page once live.</p>
+
+${EXPLAIN}
+
+<h2 class="sec">STORAGE &amp; HANDLING</h2>
+<p class="note">Refrigerate 2–8 °C. Protect from light. Sealed at origin; supplied strictly for laboratory research use.</p>
+` + legal(`/${x.slug}/`);
+}
+
 /* ---------- write ---------- */
 fs.writeFileSync("index.html", buildIndex());
+for (const x of PENDING) {
+  fs.mkdirSync(x.slug, { recursive: true });
+  fs.writeFileSync(`${x.slug}/index.html`, buildPending(x));
+}
 for (const x of COMPOUNDS) fs.writeFileSync(`${x.slug}/index.html`, buildCompound(x));
 console.log("built: index + " + COMPOUNDS.map((c) => c.slug).join(", "));
