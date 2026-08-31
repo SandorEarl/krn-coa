@@ -291,8 +291,8 @@ ${EXPLAIN}
 // No index rows for these (Glowtox precedent) — reachable only via the printed QR deep link
 // until the first lot's certificates land, at which point they graduate into COMPOUNDS.
 const PENDING = [
-  { slug: "rt", name: "RETATRUTIDE", c: "#E04E14", contents: "Retatrutide", dose: "20MG", format: "5ML MULTI-DOSE VIAL" },
-  { slug: "mots", name: "MOTS-C", c: "#3D6BFF", contents: "MOTS-C", dose: "40MG", format: "5ML MULTI-DOSE VIAL" },
+  { slug: "rt", name: "RETATRUTIDE", c: "#FF4D00", contents: "Retatrutide", dose: "20MG", format: "5ML MULTI-DOSE VIAL" },
+  { slug: "mots", name: "MOTS-C", c: "#1BE55D", contents: "MOTS-C", dose: "40MG", format: "5ML MULTI-DOSE VIAL" },
 ];
 
 function buildPending(x) {
